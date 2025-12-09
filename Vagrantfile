@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   
   config.vm.define 'master' do |machine|
-    machine.vm.box = "ubuntu/jammy64"
+    machine.vm.box = "debian/bookworm64"
     machine.vm.hostname = "master"
     machine.vm.network "private_network", ip: "192.168.56.10"
 
