@@ -16,7 +16,6 @@ Vagrant.configure("2") do |config|
     end
 
     machine.vm.provision 'shell', path: 'scripts/master.sh'
-    machine.vm.provision 'shell', path: 'scripts/kubeconfig.sh'
   end
 
   (1..WORKERS).each do |i|
