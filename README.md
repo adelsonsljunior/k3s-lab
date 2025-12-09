@@ -9,6 +9,11 @@ Suba o ambiente
 vagrant up
 ~~~
 
+Exporte o KUBECONFIG
+~~~sh
+source env.sh
+~~~
+
 Lista das VMs
 hostname|address|
 ---|---|
