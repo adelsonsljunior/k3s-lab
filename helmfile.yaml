@@ -1,0 +1,16 @@
+repositories:
+- name: hashicorp
+  url: https://helm.releases.hashicorp.com
+
+releases:
+- name: vault
+  namespace: vault
+  createNamespace: true
+  chart: hashicorp/vault
+  version: 0.31.0
+
+- name: vault-secrets-operator
+  namespace: vault-secrets-operator
+  createNamespace: true
+  chart: hashicorp/vault-secrets-operator
+  version: 1.0.1

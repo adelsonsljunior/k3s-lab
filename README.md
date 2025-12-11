@@ -3,16 +3,45 @@
 Ferramentas necessárias:
 - VirtualBox
 - Vagrant
+- Helm
+- Helmfile
+- Hashicorp Vault CLI
 
-Suba o ambiente
+## Setup do ambiente
+
+Suba as VMs
 ~~~sh
 vagrant up
 ~~~
 
-Exporte o KUBECONFIG
+Suba as aplicações do ambiente
+~~~sh
+helmfile init
+helmfile apply
+~~~
+
+Exporte as envs
 ~~~sh
 source env.sh
 ~~~
+
+## Configuração do Hashicrop Vautl
+
+Faça o port-forward do Vault
+~~~sh
+kubectl port-forward -n vault svc/vault 8200:8200 
+~~~
+
+Realize o processo de unseal do Vault
+~~~sh
+vault operator init
+vault operator unseal
+vault operator unseal
+vault operator unseal
+vault login
+~~~
+
+## Informações úteis
 
 Lista das VMs
 node|address|
