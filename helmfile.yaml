@@ -1,8 +1,16 @@
 repositories:
+- name: metallb
+  url: https://metallb.github.io/metallb
 - name: hashicorp
   url: https://helm.releases.hashicorp.com
 
 releases:
+- name: metallb
+  namespace: metallb
+  createNamespace: true
+  chart: metallb/metallb
+  version: 0.15.3
+
 - name: vault
   namespace: vault
   createNamespace: true
