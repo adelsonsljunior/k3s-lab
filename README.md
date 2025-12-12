@@ -25,6 +25,11 @@ Exporte as envs
 source env.sh
 ~~~
 
+Configure os hosts
+~~~sh
+sudo cat hosts >> /etc/hosts
+~~~
+
 ## Configuração do Hashicrop Vautl
 
 Faça o port-forward do Vault
@@ -49,3 +54,9 @@ node|address|
 master|192.168.56.10|
 worker1|192.168.56.21|
 worker2|192.168.56.22|
+
+Hosts
+~~~hosts
+192.168.56.30  	nginx.lab.local
+192.168.56.30   httpd.lab.local
+~~~
