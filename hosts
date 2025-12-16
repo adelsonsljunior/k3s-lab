@@ -1,2 +1,3 @@
 192.168.56.30  	nginx.lab.local
 192.168.56.30   httpd.lab.local
+192.168.56.30   traefik.lab.local

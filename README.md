@@ -3,26 +3,31 @@
 Ferramentas necessárias:
 - VirtualBox
 - Vagrant
+- Kubectl
 - Helm
 - Helmfile
 - Hashicorp Vault CLI
 
 ## Setup do ambiente
 
-Suba as VMs
+Suba o cluster
 ~~~sh
 vagrant up
-~~~
-
-Suba as aplicações do ambiente
-~~~sh
-helmfile init
-helmfile apply
 ~~~
 
 Exporte as envs
 ~~~sh
 source env.sh
+~~~
+
+Suba as aplicações do ambiente
+~~~sh
+./setup.sh
+~~~
+
+Após terminar a instação do MetalLB aplique o manifesto de load balancer
+~~~sh
+kubectl apply -f manifests/metallb/load-balancer.yaml
 ~~~
 
 Configure os hosts
@@ -59,4 +64,5 @@ Hosts
 ~~~hosts
 192.168.56.30  	nginx.lab.local
 192.168.56.30   httpd.lab.local
+192.168.56.30   traefik.lab.local
 ~~~
