@@ -10,24 +10,9 @@ Ferramentas necessárias:
 
 ## Setup do ambiente
 
-Suba o cluster
+Suba o laboratório
 ~~~sh
-vagrant up
-~~~
-
-Exporte as envs
-~~~sh
-source env.sh
-~~~
-
-Suba as aplicações do ambiente
-~~~sh
-./setup.sh
-~~~
-
-Após terminar a instação do MetalLB aplique o manifesto de load balancer
-~~~sh
-kubectl apply -f manifests/metallb/load-balancer.yaml
+make
 ~~~
 
 Configure os hosts
