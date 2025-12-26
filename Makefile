@@ -22,6 +22,9 @@ uninstall:
 manifests:
 	./manifests.sh
 
+stop:
+	vagrant halt
+
 destroy: kubeconfig.lab token
 	vagrant destroy -f 
 	rm -rf .vagrant 
