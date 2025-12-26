@@ -16,8 +16,9 @@ setup:
 uninstall:
 	helm uninstall -n metallb metallb
 	helm uninstall -n traefik traefik
-	helm uninstall -n vault vault
-	helm uninstall -n vault-secrets-operator vault-secrets-operator
+	helm uninstall -n kube-system sealed-secrets
+	helm uninstall -n cnpg-system cnpg
+	helm uninstall -n argocd argocd
 
 manifests:
 	./manifests.sh
