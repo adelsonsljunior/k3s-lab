@@ -1,11 +1,11 @@
 # k3s-lab
 
 Ferramentas necessárias:
+- Make
 - VirtualBox
 - Vagrant
 - Kubectl
 - Helm
-- Helmfile
 - Hashicorp Vault CLI
 
 ## Setup do ambiente
@@ -20,7 +20,7 @@ Configure os hosts
 sudo cat hosts >> /etc/hosts
 ~~~
 
-## Configuração do Hashicrop Vautl
+## Configuração do Hashicrop Vault
 
 Faça o port-forward do Vault
 ~~~sh
@@ -50,4 +50,5 @@ Hosts
 192.168.56.30  	nginx.lab.local
 192.168.56.30   httpd.lab.local
 192.168.56.30   traefik.lab.local
+192.168.56.30   argocd.lab.local
 ~~~
