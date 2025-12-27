@@ -408,6 +408,8 @@ configs:
     # If false, it is expected the configmap will be created by something else.
     create: true
 
+    server.insecure: "true"
+
     # -- Annotations to be added to the argocd-cmd-params-cm ConfigMap
     annotations: {}
 
