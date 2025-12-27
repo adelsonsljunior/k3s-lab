@@ -20,6 +20,11 @@ Configure os hosts
 sudo cat hosts >> /etc/hosts
 ~~~
 
+Obter senhas das aplicações
+~~~sh
+make passwd
+~~~
+
 ## Configuração do Hashicrop Vault
 
 Faça o port-forward do Vault

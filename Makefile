@@ -23,6 +23,10 @@ uninstall:
 manifests:
 	./manifests.sh
 
+passwd:
+	@echo "ARGOCD:"
+	@kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
 stop:
 	vagrant halt
 
