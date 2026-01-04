@@ -21,7 +21,7 @@ uninstall:
 	helm uninstall -n argocd argocd
 
 manifests:
-	./manifests.sh
+	ansible-playbook playbooks/manifests.yaml
 
 passwd:
 	@echo "ARGOCD:"

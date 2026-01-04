@@ -1,0 +1,26 @@
+- name: Aplicar Manifestos
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Aplicar configuração do LoadBalancer do MetalLB
+      kubernetes.core.k8s:
+        state: present
+        src: ../manifests/metallb/load-balancer.yaml
+      register: mlb_apply
+      retries: 3
+      delay: 10
+      ignore_errors: true
+      until: mlb_apply is success
+
+    - name: Remover webhook em caso de falha
+      kubernetes.core.k8s:
+        state: absent
+        kind: ValidatingWebhookConfiguration
+        name: metallb-webhook-configuration
+      when: mlb_apply is failed
+
+    - name: Re-tentar aplicar manifesto do MetalLB após limpar webhook
+      kubernetes.core.k8s:
+        state: present
+        src: ../manifests/metallb/load-balancer.yaml
+      when: mlb_apply is failed
