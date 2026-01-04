@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .PHONY: manifests
 
-all: up env setup manifests
+all: up env helm manifests
 
 up:
 	vagrant up
@@ -10,8 +10,8 @@ up:
 env:
 	source env.sh
 
-setup:
-	./setup.sh
+helm:
+	ansible-playbook playbooks/helm.yaml
 
 uninstall:
 	helm uninstall -n metallb metallb

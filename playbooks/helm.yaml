@@ -1,0 +1,61 @@
+- name: Deploy Infraestrutura via Helm
+  hosts: localhost
+  connection: local
+  vars:
+    helm_charts:
+      - { name: metallb, url: https://metallb.github.io/metallb }
+      - { name: traefik, url: https://traefik.github.io/charts }
+      - { name: hashicorp, url: https://helm.releases.hashicorp.com }
+      - { name: sealed-secrets, url: https://bitnami-labs.github.io/sealed-secrets }
+      - { name: cnpg, url: https://cloudnative-pg.github.io/charts }
+      - { name: argo, url: https://argoproj.github.io/argo-helm }
+  tasks:
+    - name: Adicionar repositórios Helm
+      kubernetes.core.helm_repository:
+        name: "{{ item.name }}"
+        url: "{{ item.url }}"
+      loop: "{{ helm_charts }}"
+
+    - name: Deploy MetalLB
+      kubernetes.core.helm:
+        name: metallb
+        chart_ref: metallb/metallb
+        release_namespace: metallb
+        create_namespace: true
+        chart_version: 0.15.3
+
+    - name: Deploy Traefik
+      kubernetes.core.helm:
+        name: traefik
+        chart_ref: traefik/traefik
+        release_namespace: traefik
+        create_namespace: true
+        chart_version: 37.4.0
+        values_files:
+          - ../values/traefik/values.yaml
+
+    - name: Deploy Sealed Secrets
+      kubernetes.core.helm:
+        name: sealed-secrets
+        chart_ref: sealed-secrets/sealed-secrets
+        release_namespace: kube-system
+        set_values:
+          - value: "fullnameOverride=sealed-secrets-controller"
+            value_type: string
+
+    - name: Deploy CloudNativePG (CNPG)
+      kubernetes.core.helm:
+        name: cnpg
+        chart_ref: cnpg/cloudnative-pg
+        release_namespace: cnpg-system
+        create_namespace: true
+
+    - name: Deploy ArgoCD
+      kubernetes.core.helm:
+        name: argocd
+        chart_ref: argo/argo-cd
+        release_namespace: argocd
+        create_namespace: true
+        chart_version: 9.2.2
+        values_files:
+          - ../values/argocd/values.yaml
