@@ -52,8 +52,6 @@ worker2|192.168.56.22|
 
 Hosts
 ~~~hosts
-192.168.56.30  	nginx.lab.local
-192.168.56.30   httpd.lab.local
 192.168.56.30   traefik.lab.local
 192.168.56.30   argocd.lab.local
 ~~~
