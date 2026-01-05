@@ -10,6 +10,7 @@
       - { name: cnpg, url: https://cloudnative-pg.github.io/charts }
       - { name: argo, url: https://argoproj.github.io/argo-helm }
       - { name: rustfs, url: https://charts.rustfs.com }
+      - { name: grafana, url: https://grafana.github.io/helm-charts }
 
   tasks:
     - name: Adicionar repositórios Helm
@@ -71,3 +72,13 @@
         chart_version: 0.0.78
         values_files:
           - ../values/rustfs/values.yaml
+
+    - name: Deploy Grafana
+      kubernetes.core.helm:
+        name: grafana
+        chart_ref: grafana/grafana
+        release_namespace: observability
+        create_namespace: true
+        chart_version: 10.5.1
+        values_files:
+          - ../values/grafana/values.yaml
