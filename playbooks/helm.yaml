@@ -25,7 +25,6 @@
         chart_ref: metallb/metallb
         release_namespace: metallb
         create_namespace: true
-        chart_version: 0.15.3
 
     - name: Deploy Traefik
       kubernetes.core.helm:
@@ -43,7 +42,6 @@
         chart_ref: hashicorp/vault
         release_namespace: vault
         create_namespace: true
-        chart_version: 0.31.0
 
     - name: Deploy Sealed Secrets
       kubernetes.core.helm:
