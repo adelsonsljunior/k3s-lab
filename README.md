@@ -6,6 +6,7 @@ Ferramentas necessárias:
 - Vagrant
 - Kubectl
 - Helm
+- Ansible
 - Hashicorp Vault CLI
 
 ## Setup do ambiente
