@@ -9,7 +9,6 @@
       - { name: sealed-secrets, url: https://bitnami-labs.github.io/sealed-secrets }
       - { name: cnpg, url: https://cloudnative-pg.github.io/charts }
       - { name: argo, url: https://argoproj.github.io/argo-helm }
-      - { name: rustfs, url: https://charts.rustfs.com }
       - { name: grafana, url: https://grafana.github.io/helm-charts }
 
   tasks:
@@ -62,16 +61,6 @@
         chart_version: 9.2.2
         values_files:
           - ../values/argocd/values.yaml
-
-    - name: Deploy RustFS
-      kubernetes.core.helm:
-        name: rustfs
-        chart_ref: rustfs/rustfs
-        release_namespace: rustfs
-        create_namespace: true
-        chart_version: 0.0.78
-        values_files:
-          - ../values/rustfs/values.yaml
 
     - name: Deploy Grafana
       kubernetes.core.helm:
