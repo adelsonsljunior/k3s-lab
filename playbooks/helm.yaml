@@ -37,6 +37,14 @@
         values_files:
           - ../values/traefik/values.yaml
 
+    - name: Deploy Hashicorp Vault
+      kubernetes.core.helm:
+        name: vault
+        chart_ref: hashicorp/vault
+        release_namespace: vault
+        create_namespace: true
+        chart_version: 0.31.0
+
     - name: Deploy Sealed Secrets
       kubernetes.core.helm:
         name: sealed-secrets
