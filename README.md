@@ -56,5 +56,6 @@ Hosts
 192.168.56.30   traefik.lab.local
 192.168.56.30   argocd.lab.local
 192.168.56.30   s3.lab.local
+192.168.56.30   prometheus.lab.local
 192.168.56.30 	grafana.lab.local
 ~~~
