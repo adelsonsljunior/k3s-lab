@@ -6,12 +6,11 @@
       - { name: metallb, url: https://metallb.github.io/metallb }
       - { name: traefik, url: https://traefik.github.io/charts }
       - { name: hashicorp, url: https://helm.releases.hashicorp.com }
-      - { name: sealed-secrets, url: https://bitnami-labs.github.io/sealed-secrets }
+      - { name: external-secrets, url: https://charts.external-secrets.io }
       - { name: cnpg, url: https://cloudnative-pg.github.io/charts }
       - { name: argo, url: https://argoproj.github.io/argo-helm }
       - { name: prometheus-community, url: https://prometheus-community.github.io/helm-charts }
       - { name: grafana, url: https://grafana.github.io/helm-charts }
-      - { name: external-secrets, url: https://charts.external-secrets.io }
 
   tasks:
     - name: Adicionar repositórios Helm
@@ -50,15 +49,6 @@
         chart_ref: external-secrets/external-secrets
         release_namespace: external-secrets
         create_namespace: true
-
-    - name: Deploy Sealed Secrets
-      kubernetes.core.helm:
-        name: sealed-secrets
-        chart_ref: sealed-secrets/sealed-secrets
-        release_namespace: kube-system
-        set_values:
-          - value: "fullnameOverride=sealed-secrets-controller"
-            value_type: string
 
     - name: Deploy CloudNativePG (CNPG)
       kubernetes.core.helm:
